@@ -221,10 +221,11 @@ body {
       @include text-small;
       color: $gray;
     }
-    a{
+    .bottom__signup-btn{
       @include text-small-bold;
       color: $green-light;
       transition: 0.3s;
+      cursor: pointer;
       &:hover{
         color: $green-middle;
       }

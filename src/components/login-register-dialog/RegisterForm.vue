@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="submitHandler">
     <div class="modal__body">
-      <h2 class="modal__body__title">Вход в ваш аккаунт</h2>
+      <h2 class="modal__body__title">Регистрация</h2>
       <div class="modal__body__inputs">
         <label for="email">Email</label>
         <input
@@ -19,13 +19,23 @@
           autocomplete="on"
           placeholder="Введите значение"
         />
+        <label for="email">Пароль еще раз</label>
+        <input
+          id="password"
+          v-model.trim="password"
+          type="text"
+          autocomplete="on"
+          placeholder="Введите значение"
+        />
       </div>
       <div class="modal__bottom">
-        <span>У вас нет аккаунта? <a href="#">Зарегистрируйтесь</a></span>
-        <button class="modal__bottom__btn">Войти</button>
-      </div>
-      <div class="modal__error" v-if="haveErrors">
-        <span>Пользователь с таким логином не найден</span>
+        <span
+          >У вас есть аккаунт?
+          <span class="bottom__signup-btn" @click="$emit('change')"
+            >Войдите</span
+          ></span
+        >
+        <button class="modal__bottom__btn">Зарегистрироваться</button>
       </div>
     </div>
   </form>
@@ -33,11 +43,10 @@
 
 <script>
 export default {
-  name: "LoginDialog",
+  name: "RegisterDialog",
   data: () => ({
     email: "",
     password: "",
-    haveErrors: false,
   }),
   methods: {
     async submitHandler() {

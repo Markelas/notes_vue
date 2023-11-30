@@ -4,16 +4,16 @@
       <button class="modal__close-btn" @click="toggleWindow">
         <CrossBtnIcon />
       </button>
-      <LoginDialog v-if="isLogin" />
-      <RegisterDialog v-else />
+      <LoginDialog v-if="isLogin" @change="openAnotherForm" />
+      <RegisterDialog v-else @change="openAnotherForm" />
     </div>
   </div>
 </template>
 
 <script>
 import CrossBtnIcon from "@/components/icons/CrossBtnIcon.vue";
-import LoginDialog from "@/components/login-register-dialog/LoginDialog.vue";
-import RegisterDialog from "@/components/login-register-dialog/RegisterDialog.vue";
+import LoginDialog from "@/components/login-register-dialog/LoginForm.vue";
+import RegisterDialog from "@/components/login-register-dialog/RegisterForm.vue";
 import store from "@/store";
 
 export default {
@@ -25,6 +25,10 @@ export default {
   methods: {
     toggleWindow() {
       store.commit("toggleLoginWindow");
+    },
+    openAnotherForm() {
+      console.log(this.isLogin);
+      this.isLogin = !this.isLogin;
     },
   },
 };
