@@ -83,15 +83,18 @@ h1, h2, h3, h4 {
 }
 body {
   background-color: $dark-color;
+  overflow-x: hidden;
 }
 .disable__body{
   overflow: hidden;
 }
-
+button {
+  border: 0;
+}
 
 .overlay{
   position:absolute;
-  width:100%;
+  width:96%;
   height:100%;
   z-index:4;
   background-color: #0A1F38;
@@ -100,6 +103,7 @@ body {
 
 .main-layout__wrapper{
   max-width: 1760px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -190,7 +194,7 @@ body {
 
     &__title{
       @include heading-h2;
-      text-align: center;
+      width: 556px;
     }
     &__inputs{
       margin-top: 40px;
@@ -256,6 +260,67 @@ body {
   }
 }
 
+/*----------------Notes Page ---------------*/
+.notes__dashboard{
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.note{
+  max-width: 506px;
+  background-color: $green-light;
+  border-radius: 12px;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 0px;
+    height: 0px;
+    border-bottom: 50px solid $green-light;
+    border-radius: 12px;
+    border-right: 50px solid transparent;
+    -webkit-box-shadow: -7px 7px 7px rgba(0,0,0,0.15);
+    -moz-box-shadow: -7px 7px 7px rgba(0,0,0,0.15);
+    box-shadow: -7px 7px 7px rgba(0,0,0,0.15);
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 0px;
+    height: 0px;
+    border-top: 50px solid $dark-color;
+    border-left: 50px solid transparent;
+  }
+  &__title{
+    padding: 20px 28px;
+    @include heading-h4;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  &__text{
+    padding: 20px 28px;
+    @include text-normal;
+    color: $white;
+  }
+  &__delete{
+    position: relative;
+    left: 320px;
+    background-color: $green-light;
+    color: $white;
+    @include text-normal;
+    padding: 24px;
+    cursor: pointer;
+    svg{
+      margin-right: 12px;
+    }
+  }
+}
+
 @media (max-width: 1366px) {
   .header__container{
     margin: 20px 80px;
@@ -265,6 +330,25 @@ body {
   }
   .promo__image {
     width: 50%;
+  }
+  /*-----modal-------*/
+  .modal__wrapper{
+    width: 594px;
+    padding: 20px 56px 56px 56px;
+    .modal__close-btn{
+      right: -460px;
+    }
+    .modal__body__inputs{
+      width: 450px;
+      input{
+        margin: 8px;
+        width: 100%;
+        height: 72px;
+        border-radius: 36px;
+        padding: 0 24px;
+        @include text-small;
+      }
+    }
   }
 }
 @media (max-width: 1138px) {
@@ -291,6 +375,59 @@ body {
       }
       &__subtitle{
         font-size: 24px;
+      }
+    }
+  }
+  .header__container{
+    margin: 20px;
+    .header__btn{
+      margin-left: 15px;
+    }
+  }
+  .promo__image{
+    width: 110%;
+  }
+  /*-----modal-------*/
+  .modal {
+    &__wrapper {
+      width: 352px;
+      padding: 20px 16px 24px 16px;
+    }
+
+    .modal__close-btn {
+      right: -260px;
+    }
+
+    .modal__body__title {
+      font-size: 32px;
+      width: 300px;
+      line-height: 112.5%;
+      margin-left: 10px;
+    }
+
+    .modal__body__inputs {
+      width: 288px;
+      input {
+        margin: 8px;
+        width: 100%;
+        height: 72px;
+        border-radius: 36px;
+        padding: 0 24px;
+        @include text-small;
+      }
+    }
+
+    .modal__bottom{
+      flex-direction: column;
+      margin: 25px 0;
+      &__btn{
+        order: 1;
+        width: 288px;
+        margin-bottom: 12px;
+      }
+      span{
+        order: 2;
+        font-size: 14px;
       }
     }
   }
