@@ -22,7 +22,7 @@
         <label for="email">Пароль еще раз</label>
         <input
           id="password"
-          v-model.trim="password"
+          v-model.trim="confirmPassword"
           type="text"
           autocomplete="on"
           placeholder="Введите значение"
@@ -35,22 +35,35 @@
             >Войдите</span
           ></span
         >
-        <button class="modal__bottom__btn">Зарегистрироваться</button>
+        <button class="modal__bottom__btn" type="submit">
+          Зарегистрироваться
+        </button>
       </div>
     </div>
   </form>
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
   name: "RegisterDialog",
   data: () => ({
     email: "",
     password: "",
+    confirmPassword: "",
   }),
   methods: {
     async submitHandler() {
-      console.log("submit");
+      console.log(this.email, this.password, this.confirmPassword);
+      if (this.password === this.confirmPassword) {
+        const newUser = {
+          email: this.email,
+          password: this.password,
+          confirm_password: this.confirmPassword,
+        };
+        await store.dispatch("register", newUser);
+      }
     },
   },
 };
