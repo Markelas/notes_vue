@@ -1,0 +1,207 @@
+//@font-face {
+//  font-weight: 400;
+//  font-family: 'Montserrat', sans-serif;
+//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
+//  src: url("fonts/static/Montserrat-Regular.ttf");
+//}
+//@font-face {
+//  font-weight: 500;
+//  font-family: 'Montserrat', sans-serif;
+//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
+//  src: url("fonts/static/Montserrat-Medium.ttf");
+//}
+//@font-face {
+//  font-weight: 600;
+//  font-family: 'Montserrat', sans-serif;
+//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
+//  src: url("fonts/static/Montserrat-SemiBold.ttf");
+//}
+//@font-face {
+//  font-weight: 700;
+//  font-family: 'Montserrat', sans-serif;
+//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
+//  src: url("fonts/static/Montserrat-Bold.ttf");
+//}
+//@font-face {
+//  font-weight: 900;
+//  font-family: 'Montserrat', sans-serif;
+//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
+//  src: url("fonts/static/Montserrat-Bold.ttf");
+//}
+
+$dark-color: #0A1F38;
+$dark-middle: #1B2F46;
+$dark-light: #2F4056;
+$gray: #9DA5AF;
+$green-dark: #819400;
+$green-middle: #97AB0D;
+$green: #A5BB0C;
+$green-light: #B1C909;
+$white: #FFFFFF;
+
+@mixin heading-h1{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 104px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 100%; /* 100% */
+}
+
+@mixin heading-h2{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 150% */
+}
+
+@mixin heading-h3{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 150% */
+}
+
+@mixin heading-h4{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 133.333%; /* 133.333% */
+}
+
+@mixin text-normal{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%; /* 160% */
+}
+@mixin text-small{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 155.556%; /* 155.556% */
+}
+
+@mixin text-small-bold{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 155.556%; /* 155.556% */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+h1, h2, h3, h4 {
+  margin: 0;
+  color: $white;
+}
+body {
+  background-color: $dark-color;
+}
+.main-layout__wrapper{
+  max-width: 1760px;
+  margin: 0 auto;
+}
+
+/*----------------Header--------------*/
+.header__container{
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 80px;
+  .header__btn{
+    max-width: 144px;
+    height: 56px;
+    background-color: $green-light;
+    color: $white;
+    @include text-normal;
+    padding: 10px 24px;
+    border-radius: 32px;
+    display: flex;
+    &__icon{
+      max-height: 32px;
+      max-width: 32px;
+      margin-right: 10px;
+    }
+  }
+}
+/*----------------LoginPage Promo------------*/
+.promo{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 80px;
+  &__text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -45px;
+    &__title{
+      @include heading-h1;
+      max-width: 488px;
+    }
+    &__subtitle{
+      @include heading-h3;
+      color: $gray;
+      max-width: 394px;
+      margin-top: 40px;
+    }
+  }
+  &__image {
+    width: 56%;
+  }
+}
+@media (max-width: 1366px) {
+  .header__container{
+    margin: 20px 80px;
+  }
+  .promo__text{
+    margin-top: 0;
+  }
+  .promo__image {
+    width: 50%;
+  }
+}
+@media (max-width: 1138px) {
+  .promo{
+    justify-content: center;
+    &__image {
+      width:80%
+    }
+    &__text{
+      text-align: center;
+      align-items: center;
+      &__subtitle{
+        text-align: center;
+      }
+    }
+  }
+}
+@media (max-width: 650px) {
+  .promo{
+    &__text{
+      &__title{
+        font-size: 68px;
+        max-width: 320px;
+      }
+      &__subtitle{
+        font-size: 24px;
+      }
+    }
+  }
+}

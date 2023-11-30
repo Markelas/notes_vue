@@ -1,0 +1,128 @@
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  color: #FFFFFF;
+}
+
+body {
+  background-color: #0A1F38;
+}
+
+.main-layout__wrapper {
+  max-width: 1760px;
+  margin: 0 auto;
+}
+
+/*----------------Header--------------*/
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 80px;
+}
+.header__container .header__btn {
+  max-width: 144px;
+  height: 56px;
+  background-color: #B1C909;
+  color: #FFFFFF;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%; /* 160% */
+  padding: 10px 24px;
+  border-radius: 32px;
+  display: flex;
+}
+.header__container .header__btn__icon {
+  max-height: 32px;
+  max-width: 32px;
+  margin-right: 10px;
+}
+
+/*----------------LoginPage Promo------------*/
+.promo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 80px;
+}
+.promo__text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -45px;
+}
+.promo__text__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 104px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 100%; /* 100% */
+  max-width: 488px;
+}
+.promo__text__subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 150% */
+  color: #9DA5AF;
+  max-width: 394px;
+  margin-top: 40px;
+}
+.promo__image {
+  width: 56%;
+}
+
+@media (max-width: 1366px) {
+  .header__container {
+    margin: 20px 80px;
+  }
+  .promo__text {
+    margin-top: 0;
+  }
+  .promo__image {
+    width: 50%;
+  }
+}
+@media (max-width: 1138px) {
+  .promo {
+    justify-content: center;
+  }
+  .promo__image {
+    width: 80%;
+  }
+  .promo__text {
+    text-align: center;
+    align-items: center;
+  }
+  .promo__text__subtitle {
+    text-align: center;
+  }
+}
+@media (max-width: 650px) {
+  .promo__text__title {
+    font-size: 68px;
+    max-width: 320px;
+  }
+  .promo__text__subtitle {
+    font-size: 24px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
