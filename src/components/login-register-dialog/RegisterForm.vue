@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
   name: "RegisterDialog",
   data: () => ({
@@ -61,6 +63,8 @@ export default {
           confirm_password: this.confirmPassword,
         };
         await this.$store.dispatch("register", newUser);
+        await store.commit("toggleLoginWindow");
+        await this.$router.push("/");
       }
     },
   },

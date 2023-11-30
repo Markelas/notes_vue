@@ -3,6 +3,7 @@
     <HeaderComp />
 
     <router-view />
+    {{ error }}
   </div>
 </template>
 
@@ -12,6 +13,16 @@ import HeaderComp from "@/components/HeaderComp.vue";
 export default {
   name: "main-layout",
   components: { HeaderComp },
+  computed: {
+    error() {
+      return this.$store.getters.error;
+    },
+  },
+  watch: {
+    error(baseError) {
+      console.log("baseError", baseError);
+    },
+  },
 };
 </script>
 

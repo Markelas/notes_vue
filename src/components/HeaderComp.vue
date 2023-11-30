@@ -2,7 +2,8 @@
   <div class="header__container">
     <MainLogo />
     <div>
-      <button class="header__btn" @click="toggleWindow">
+      <button v-if="activeUser">{{ activeUser }}</button>
+      <button class="header__btn" @click="toggleWindow" v-else>
         <EnterIcon class="header__btn__icon" /> Вход
       </button>
     </div>
@@ -22,6 +23,18 @@ export default defineComponent({
     toggleWindow() {
       store.commit("toggleLoginWindow");
     },
+  },
+  computed: {
+    activeUser() {
+      console.log(this.$store.state.activeUser);
+      return this.$store.state.activeUser;
+    },
+  },
+  getters: {
+    error: (s) => s.error,
+  },
+  mounted() {
+    store.dispatch("checkAuth");
   },
 });
 </script>

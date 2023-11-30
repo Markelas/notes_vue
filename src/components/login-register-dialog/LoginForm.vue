@@ -52,8 +52,13 @@ export default {
         email: this.email,
         password: this.password,
       };
-      console.log(loginUser);
-      await store.dispatch("login", loginUser);
+      try {
+        await store.commit("toggleLoginWindow");
+        await store.dispatch("login", loginUser);
+        await this.$router.push("/");
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 };
