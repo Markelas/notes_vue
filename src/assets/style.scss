@@ -1,33 +1,3 @@
-//@font-face {
-//  font-weight: 400;
-//  font-family: 'Montserrat', sans-serif;
-//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
-//  src: url("fonts/static/Montserrat-Regular.ttf");
-//}
-//@font-face {
-//  font-weight: 500;
-//  font-family: 'Montserrat', sans-serif;
-//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
-//  src: url("fonts/static/Montserrat-Medium.ttf");
-//}
-//@font-face {
-//  font-weight: 600;
-//  font-family: 'Montserrat', sans-serif;
-//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
-//  src: url("fonts/static/Montserrat-SemiBold.ttf");
-//}
-//@font-face {
-//  font-weight: 700;
-//  font-family: 'Montserrat', sans-serif;
-//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
-//  src: url("fonts/static/Montserrat-Bold.ttf");
-//}
-//@font-face {
-//  font-weight: 900;
-//  font-family: 'Montserrat', sans-serif;
-//  src: url("fonts/Montserrat-VariableFont_wght.ttf");
-//  src: url("fonts/static/Montserrat-Bold.ttf");
-//}
 
 $dark-color: #0A1F38;
 $dark-middle: #1B2F46;
@@ -114,6 +84,20 @@ h1, h2, h3, h4 {
 body {
   background-color: $dark-color;
 }
+.disable__body{
+  overflow: hidden;
+}
+
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index:4;
+  background-color: #0A1F38;
+  opacity: 0.7;
+}
+
 .main-layout__wrapper{
   max-width: 1760px;
   margin: 0 auto;
@@ -133,6 +117,11 @@ body {
     padding: 10px 24px;
     border-radius: 32px;
     display: flex;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover{
+      background-color: $green-middle;
+    }
     &__icon{
       max-height: 32px;
       max-width: 32px;
@@ -166,6 +155,106 @@ body {
     width: 56%;
   }
 }
+
+/*----------------Modal Window Login ----------------*/
+.modal{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  &__wrapper{
+    max-width: 780px;
+    border-radius: 40px;
+    background-color: $dark-middle;
+    padding: 20px 80px 80px 80px;
+  }
+  &__close-btn{
+    position: relative;
+    right: -610px;
+    max-width: 56px;
+    max-height: 56px;
+    border-radius: 32px;
+    padding: 18px;
+    background-color: $green-light;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover{
+      background-color: $green-middle;
+    }
+  }
+  &__body{
+
+    &__title{
+      @include heading-h2;
+      text-align: center;
+    }
+    &__inputs{
+      margin-top: 40px;
+      width: 620px;
+      label {
+        display: block;
+        @include text-small;
+        color: $gray;
+        margin-left: 24px;
+      }
+      input{
+        margin: 8px;
+        width: 100%;
+        height: 72px;
+        border-radius: 36px;
+        padding: 0 24px;
+        @include text-small;
+      }
+    }
+  }
+  &__bottom{
+    margin-top: 40px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      @include text-small;
+      color: $gray;
+    }
+    a{
+      @include text-small-bold;
+      color: $green-light;
+      transition: 0.3s;
+      &:hover{
+        color: $green-middle;
+      }
+    }
+    &__btn{
+      border-radius: 32px;
+      background-color: $green-light ;
+      @include text-normal;
+      padding: 10px 24px;
+      color: $white;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover{
+        background-color: $green-middle;
+      }
+    }
+  }
+  &__error{
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgba(255, 116, 97, 0.10);
+    border-radius: 24px;
+    padding: 8px 20px;
+    span {
+      @include text-small;
+      color: #FF7461;
+    }
+  }
+}
+
 @media (max-width: 1366px) {
   .header__container{
     margin: 20px 80px;
