@@ -44,8 +44,6 @@
 </template>
 
 <script>
-import store from "@/store";
-
 export default {
   name: "RegisterDialog",
   data: () => ({
@@ -62,7 +60,7 @@ export default {
           password: this.password,
           confirm_password: this.confirmPassword,
         };
-        await store.dispatch("register", newUser);
+        await this.$store.dispatch("register", newUser);
       }
     },
   },

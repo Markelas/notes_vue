@@ -27,7 +27,7 @@
             Зарегистрируйтесь
           </span>
         </span>
-        <button class="modal__bottom__btn">Войти</button>
+        <button class="modal__bottom__btn" type="submit">Войти</button>
       </div>
       <div class="modal__error" v-if="haveErrors">
         <span>Пользователь с таким логином не найден</span>
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
   name: "LoginDialog",
   data: () => ({
@@ -46,7 +48,12 @@ export default {
   }),
   methods: {
     async submitHandler() {
-      console.log("submit");
+      const loginUser = {
+        email: this.email,
+        password: this.password,
+      };
+      console.log(loginUser);
+      await store.dispatch("login", loginUser);
     },
   },
 };
