@@ -1,6 +1,6 @@
 export default {
   state: {
-    activeUser: {},
+    activeUser: localStorage.getItem("user") || {},
     token: "",
   },
   mutations: {
@@ -83,6 +83,7 @@ export default {
           .then((data) => data);
         let accessToken = data["accessToken"];
         localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("user", loginUser.email);
         console.log(accessToken);
         context.commit("updateActiveUser", { loginUser, accessToken }); //Вызываем мутацию, чтобы обновить в state активного пользователя
         return status;

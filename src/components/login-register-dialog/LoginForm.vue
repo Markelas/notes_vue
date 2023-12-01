@@ -54,15 +54,11 @@ export default {
         password: this.password,
       };
       try {
-        const loginReq = await store.dispatch("login", loginUser); //Делаем запрос
-        // if (loginReq.ok) {
-        console.log(loginReq);
+        await store.dispatch("login", loginUser); //Делаем запрос
         //Если в ответе все хорошо, то переходим
         await store.commit("toggleLoginWindow");
         await this.$router.push("/");
-        // const resp = await store.dispatch("checkAuth");
-        // console.log(resp);
-        // }
+        await store.dispatch("checkAuth");
       } catch (e) {
         console.log(e);
       }

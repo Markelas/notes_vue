@@ -112,6 +112,17 @@ button {
   display: flex;
   justify-content: space-between;
   margin: 40px 80px;
+  .header__user-btn{
+    display: flex;
+    align-items: center;
+    color: $white;
+    background-color: #0A1F38;
+    @include text-small;
+    cursor: pointer;
+    svg{
+      margin-left: 12px;
+    }
+  }
   .header__btn{
     max-width: 144px;
     height: 56px;

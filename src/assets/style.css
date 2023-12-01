@@ -53,6 +53,21 @@ button {
   justify-content: space-between;
   margin: 40px 80px;
 }
+.header__container .header__user-btn {
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  background-color: #0A1F38;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 155.556%; /* 155.556% */
+  cursor: pointer;
+}
+.header__container .header__user-btn svg {
+  margin-left: 12px;
+}
 .header__container .header__btn {
   max-width: 144px;
   height: 56px;
