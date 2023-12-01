@@ -27,7 +27,6 @@ export default {
       store.commit("toggleLoginWindow");
     },
     openAnotherForm() {
-      console.log(this.isLogin);
       this.isLogin = !this.isLogin;
     },
   },

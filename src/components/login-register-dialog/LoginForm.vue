@@ -48,14 +48,21 @@ export default {
   }),
   methods: {
     async submitHandler() {
+      //Заходим
       const loginUser = {
         email: this.email,
         password: this.password,
       };
       try {
+        const loginReq = await store.dispatch("login", loginUser); //Делаем запрос
+        // if (loginReq.ok) {
+        console.log(loginReq);
+        //Если в ответе все хорошо, то переходим
         await store.commit("toggleLoginWindow");
-        await store.dispatch("login", loginUser);
         await this.$router.push("/");
+        // const resp = await store.dispatch("checkAuth");
+        // console.log(resp);
+        // }
       } catch (e) {
         console.log(e);
       }

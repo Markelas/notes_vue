@@ -2,7 +2,9 @@
   <div class="header__container">
     <MainLogo />
     <div>
-      <button v-if="activeUser">{{ activeUser }}</button>
+      <button v-if="this.$store.state.activeUser">
+        {{ this.$store.state.activeUser }}
+      </button>
       <button class="header__btn" @click="toggleWindow" v-else>
         <EnterIcon class="header__btn__icon" /> Вход
       </button>

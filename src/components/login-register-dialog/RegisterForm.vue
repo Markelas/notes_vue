@@ -55,16 +55,22 @@ export default {
   }),
   methods: {
     async submitHandler() {
+      // Регистрируемся и логинимся
       console.log(this.email, this.password, this.confirmPassword);
       if (this.password === this.confirmPassword) {
+        //Если пароли совпадают
         const newUser = {
           email: this.email,
           password: this.password,
           confirm_password: this.confirmPassword,
         };
-        await this.$store.dispatch("register", newUser);
-        await store.commit("toggleLoginWindow");
-        await this.$router.push("/");
+        let registerReq = await this.$store.dispatch("register", newUser); //Делаем запрос на сервер
+        registerReq = JSON.parse(registerReq); //Парсим ответ
+        if (!("statusCode" in registerReq)) {
+          //Если есть ошибка, то остаетмся, если нет, то переходим
+          await store.commit("toggleLoginWindow");
+          await this.$router.push("/");
+        }
       }
     },
   },
