@@ -222,6 +222,34 @@ button {
         height: 72px;
         border-radius: 36px;
         padding: 0 24px;
+        border: none;
+        @include text-small;
+      }
+      textarea {
+        margin: 8px;
+        width: 100%;
+        padding: 16px;
+        border-radius: 36px;
+        max-height: 244px;
+        resize: none;
+        border: none;
+        @include text-small;
+        &::-webkit-scrollbar {
+          width: 5px;
+          background-color: rgba(26, 24, 47, 0.15);
+          border-radius: 5px;
+          height: 200px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #1A182F;
+          border-radius: 5px;
+        }
+      }
+      .input__length {
+        display: flex;
+        justify-content: flex-end;
+        left: 100px;
+        color: $gray;
         @include text-small;
       }
     }

@@ -6,6 +6,8 @@
     <OneNote />
     <OneNote />
     <button class="notes__dashboard__add-btn"><AddNoteIcon /></button>
+    <NewNoteDialog v-if="isActiveAddNewNote" />
+    <div class="overlay" v-if="$store.state.modalActive" />
   </div>
 </template>
 
@@ -13,10 +15,14 @@
 import OneNote from "@/components/OneNote.vue";
 import AddNoteIcon from "@/components/icons/AddNoteIcon.vue";
 import store from "@/store";
+import NewNoteDialog from "@/components/addNewNoteDialog/NewNoteDialog.vue";
 
 export default {
   name: "HomePage",
-  components: { AddNoteIcon, OneNote },
+  components: { NewNoteDialog, AddNoteIcon, OneNote },
+  data: () => ({
+    isActiveAddNewNote: true,
+  }),
   async mounted() {
     await store.dispatch("getNotes");
   },
