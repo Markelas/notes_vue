@@ -321,9 +321,14 @@ button {
 }
 .note{
   max-width: 30%;
+  min-width: 500px;
+  height: 100%;
   background-color: $green-light;
   border-radius: 12px;
   position: relative;
+  inline-size: 300px;
+  overflow-wrap: break-word;
+  overflow: hidden;
   &:before {
     content: "";
     position: absolute;

@@ -29,7 +29,7 @@ export default defineComponent({
   }),
   methods: {
     toggleWindow() {
-      store.commit("toggleLoginWindow");
+      store.commit("toggleBackgroundModalWindow");
     },
     toggleExitBtn() {
       this.isOpenExitBtn = !this.isOpenExitBtn;

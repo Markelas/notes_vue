@@ -24,7 +24,7 @@ export default {
   }),
   methods: {
     toggleWindow() {
-      store.commit("toggleLoginWindow");
+      store.commit("toggleBackgroundModalWindow");
     },
     openAnotherForm() {
       this.isLogin = !this.isLogin;

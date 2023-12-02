@@ -1,3 +1,10 @@
+<template>
+  <div class="exit-box" @click="exitFromAccount">
+    <span class="triangle"></span>
+    <p class="exit-box__text">Выйти</p>
+  </div>
+</template>
+
 <script>
 import store from "@/store";
 
@@ -5,18 +12,12 @@ export default {
   name: "ExitButton",
   methods: {
     exitFromAccount() {
-      return store.dispatch("exitFromAccount");
+      store.dispatch("exitFromAccount");
+      this.$router.push("/login");
     },
   },
 };
 </script>
-
-<template>
-  <div class="exit-box" @click="exitFromAccount">
-    <span class="triangle"></span>
-    <p class="exit-box__text">Выйти</p>
-  </div>
-</template>
 
 <style lang="scss">
 .exit-box {

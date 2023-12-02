@@ -84,7 +84,6 @@ export default {
         let accessToken = data["accessToken"];
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("user", loginUser.email);
-        console.log(accessToken);
         context.commit("updateActiveUser", { loginUser, accessToken }); //Вызываем мутацию, чтобы обновить в state активного пользователя
         return status;
       } catch (e) {
@@ -92,6 +91,7 @@ export default {
         throw e;
       }
     },
+
     async exitFromAccount(context) {
       await fetch("https://dist.nd.ru/api/auth", {
         method: "DELETE",

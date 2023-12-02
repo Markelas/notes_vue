@@ -56,7 +56,7 @@ export default {
       try {
         await store.dispatch("login", loginUser); //Делаем запрос
         //Если в ответе все хорошо, то переходим
-        await store.commit("toggleLoginWindow");
+        await store.commit("toggleBackgroundModalWindow");
         await this.$router.push("/");
         await store.dispatch("checkAuth");
       } catch (e) {

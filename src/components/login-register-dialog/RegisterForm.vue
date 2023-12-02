@@ -68,7 +68,7 @@ export default {
         registerReq = JSON.parse(registerReq); //Парсим ответ
         if (!("statusCode" in registerReq)) {
           //Если есть ошибка, то остаетмся, если нет, то переходим
-          await store.commit("toggleLoginWindow");
+          await store.commit("toggleBackgroundModalWindow");
           await this.$router.push("/");
         }
       }

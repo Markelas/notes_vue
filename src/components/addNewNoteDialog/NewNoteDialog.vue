@@ -1,7 +1,7 @@
 <template>
   <div class="modal">
     <div class="modal__wrapper">
-      <button class="modal__close-btn">
+      <button class="modal__close-btn" @click="toggleBackgroundModalWindow">
         <CrossBtnIcon />
       </button>
       <form @submit.prevent="submitHandler">
@@ -21,14 +21,14 @@
             <label for="noteContent">Текст заметки</label>
             <textarea
               v-model="noteContent"
-              maxlength="500"
+              maxlength="200"
               rows="7"
               cols="3"
               required
               placeholder="Введите текст"
             />
             <span class="input__length">{{
-              `${noteContent.length} / 500`
+              `${noteContent.length} / 200`
             }}</span>
           </div>
           <div class="modal__bottom">
@@ -58,6 +58,12 @@ export default {
         content: this.noteContent,
       };
       await store.dispatch("addNote", noteInfo);
+      this.toggleBackgroundModalWindow();
+      this.$emit("add", noteInfo);
+    },
+
+    toggleBackgroundModalWindow() {
+      store.commit("toggleBackgroundModalWindow");
     },
   },
 };

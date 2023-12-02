@@ -315,9 +315,14 @@ button {
 
 .note {
   max-width: 30%;
+  min-width: 500px;
+  height: 100%;
   background-color: #B1C909;
   border-radius: 12px;
   position: relative;
+  inline-size: 300px;
+  overflow-wrap: break-word;
+  overflow: hidden;
 }
 .note:before {
   content: "";

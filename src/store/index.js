@@ -12,7 +12,7 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
-    toggleLoginWindow(state) {
+    toggleBackgroundModalWindow(state) {
       state.modalActive = !state.modalActive;
       state.modalActive
         ? document.body.classList.add("disable__body") //Навешиваем overflow hidden на body
