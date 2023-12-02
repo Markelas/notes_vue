@@ -14,6 +14,7 @@ export default {
     exitFromAccount() {
       store.dispatch("exitFromAccount");
       this.$router.push("/login");
+      this.$emit("exit");
     },
   },
 };

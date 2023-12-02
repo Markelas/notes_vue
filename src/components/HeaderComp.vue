@@ -2,13 +2,17 @@
   <div class="header__container">
     <MainLogo />
     <div>
-      <button v-if="activeUser" class="header__user-btn" @click="toggleExitBtn">
-        {{ activeUser }} <ProfileIcon />
+      <button
+        v-if="$store.getters.activeUser"
+        class="header__user-btn"
+        @click="toggleExitBtn"
+      >
+        {{ $store.getters.activeUser }} <ProfileIcon />
       </button>
       <button class="header__btn" @click="toggleWindow" v-else>
         <EnterIcon class="header__btn__icon" /> Вход
       </button>
-      <ExitButton v-if="isOpenExitBtn" />
+      <ExitButton v-if="isOpenExitBtn" @exit="hideBtn" />
     </div>
     <div class="overlay" v-if="$store.state.modalActive" />
   </div>
@@ -34,12 +38,11 @@ export default defineComponent({
     toggleExitBtn() {
       this.isOpenExitBtn = !this.isOpenExitBtn;
     },
-  },
-  computed: {
-    activeUser() {
-      return store.state.activeUser || localStorage.getItem("user");
+    hideBtn() {
+      this.isOpenExitBtn = !this.isOpenExitBtn;
     },
   },
+  computed: {},
   async mounted() {
     await store.dispatch("checkAuth");
   },

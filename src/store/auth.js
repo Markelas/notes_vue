@@ -1,6 +1,6 @@
 export default {
   state: {
-    activeUser: localStorage.getItem("user") || {},
+    activeUser: localStorage.getItem("user") || null,
     token: "",
   },
   mutations: {
@@ -105,7 +105,12 @@ export default {
       localStorage.removeItem("user");
       localStorage.removeItem("accessToken");
       context.state.token = "";
-      context.state.activeUser = {};
+      context.state.activeUser = null;
+    },
+  },
+  getters: {
+    activeUser(state) {
+      return state.activeUser || localStorage.getItem("user");
     },
   },
 };
