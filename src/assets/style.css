@@ -311,11 +311,11 @@ button {
   height: 56px;
   padding: 4px 12px 0 12px;
   cursor: pointer;
+  box-shadow: 1px 4px 22px rgba(0, 0, 0, 0.55);
 }
 
 .note {
-  max-width: 30%;
-  min-width: 500px;
+  min-width: 30%;
   height: 100%;
   background-color: #B1C909;
   border-radius: 12px;
@@ -341,10 +341,10 @@ button {
 .note:after {
   content: "";
   position: absolute;
-  top: 0%;
-  right: 0%;
-  width: 0px;
-  height: 0px;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
   border-top: 50px solid #0A1F38;
   border-left: 50px solid transparent;
 }
@@ -434,6 +434,21 @@ button {
   .promo__text__subtitle {
     text-align: center;
   }
+  .notes__dashboard {
+    justify-content: center;
+  }
+  .notes__dashboard .note {
+    width: 40%;
+  }
+}
+@media (max-width: 970px) {
+  .notes__dashboard {
+    justify-content: center;
+    padding: 0 20px;
+  }
+  .notes__dashboard .note {
+    width: 90%;
+  }
 }
 @media (max-width: 650px) {
   .promo__text__title {
@@ -493,6 +508,11 @@ button {
   .modal .modal__bottom span {
     order: 2;
     font-size: 14px;
+  }
+}
+@media (max-width: 461px) {
+  .header__user-btn {
+    display: none;
   }
 }
 
