@@ -258,15 +258,27 @@ button {
 
 /*----------------Notes Page ---------------*/
 .notes__dashboard {
-  max-width: 1600px;
+  max-width: 1800px;
+  padding: 0 80px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
 }
+.notes__dashboard__add-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #B1C909;
+  border-radius: 32px;
+  width: 56px;
+  height: 56px;
+  padding: 4px 12px 0 12px;
+  cursor: pointer;
+}
 
 .note {
-  max-width: 506px;
+  max-width: 30%;
   background-color: #B1C909;
   border-radius: 12px;
   position: relative;
@@ -274,10 +286,10 @@ button {
 .note:before {
   content: "";
   position: absolute;
-  top: 0%;
-  right: 0%;
-  width: 0px;
-  height: 0px;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
   border-bottom: 50px solid #B1C909;
   border-radius: 12px;
   border-right: 50px solid transparent;
@@ -313,9 +325,12 @@ button {
   line-height: 160%; /* 160% */
   color: #FFFFFF;
 }
-.note__delete {
-  position: relative;
-  left: 320px;
+.note__box {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+.note__box__delete {
   background-color: #B1C909;
   color: #FFFFFF;
   font-family: "Montserrat", sans-serif;
@@ -326,7 +341,7 @@ button {
   padding: 24px;
   cursor: pointer;
 }
-.note__delete svg {
+.note__box__delete svg {
   margin-right: 12px;
 }
 

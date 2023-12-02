@@ -2,12 +2,13 @@
   <div class="header__container">
     <MainLogo />
     <div>
-      <button v-if="activeUser" class="header__user-btn">
+      <button v-if="activeUser" class="header__user-btn" @click="toggleExitBtn">
         {{ activeUser }} <ProfileIcon />
       </button>
       <button class="header__btn" @click="toggleWindow" v-else>
         <EnterIcon class="header__btn__icon" /> Вход
       </button>
+      <ExitButton v-if="isOpenExitBtn" />
     </div>
     <div class="overlay" v-if="$store.state.modalActive" />
   </div>
@@ -19,21 +20,25 @@ import EnterIcon from "@/components/icons/EnterIcon.vue";
 import { defineComponent } from "vue";
 import store from "@/store";
 import ProfileIcon from "@/components/icons/ProfileIcon.vue";
+import ExitButton from "@/components/ExitButton.vue";
 
 export default defineComponent({
-  components: { ProfileIcon, EnterIcon, MainLogo },
+  components: { ExitButton, ProfileIcon, EnterIcon, MainLogo },
+  data: () => ({
+    isOpenExitBtn: false,
+  }),
   methods: {
     toggleWindow() {
       store.commit("toggleLoginWindow");
     },
+    toggleExitBtn() {
+      this.isOpenExitBtn = !this.isOpenExitBtn;
+    },
   },
   computed: {
     activeUser() {
-      return localStorage.getItem("user");
+      return store.state.activeUser || localStorage.getItem("user");
     },
-  },
-  getters: {
-    error: (s) => s.error,
   },
   async mounted() {
     await store.dispatch("checkAuth");

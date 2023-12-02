@@ -5,15 +5,21 @@
     <OneNote />
     <OneNote />
     <OneNote />
+    <button class="notes__dashboard__add-btn"><AddNoteIcon /></button>
   </div>
 </template>
 
 <script>
 import OneNote from "@/components/OneNote.vue";
+import AddNoteIcon from "@/components/icons/AddNoteIcon.vue";
+import store from "@/store";
 
 export default {
   name: "HomePage",
-  components: { OneNote },
+  components: { AddNoteIcon, OneNote },
+  async mounted() {
+    await store.dispatch("getNotes");
+  },
 };
 </script>
 

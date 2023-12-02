@@ -5,7 +5,9 @@
       А также явные признаки победы институционализации могут быть объединены в
       целые кластеры себе подобных.
     </p>
-    <button class="note__delete"><cross-btn-icon /> Удалить</button>
+    <div class="note__box">
+      <button class="note__box__delete"><cross-btn-icon /> Удалить</button>
+    </div>
   </div>
 </template>
 

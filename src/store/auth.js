@@ -92,5 +92,20 @@ export default {
         throw e;
       }
     },
+    async exitFromAccount(context) {
+      await fetch("https://dist.nd.ru/api/auth", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        credentials: "omit",
+        cache: "default",
+      });
+      localStorage.removeItem("user");
+      localStorage.removeItem("accessToken");
+      context.state.token = "";
+      context.state.activeUser = {};
+    },
   },
 };
