@@ -2,11 +2,15 @@ export default {
   state: {
     activeUser: localStorage.getItem("user") || null,
     token: "",
+    errorText: "",
   },
   mutations: {
     updateActiveUser(state, user, token) {
       state.token = token;
       state.activeUser = user.email;
+    },
+    addError(state, error) {
+      state.errorText = error;
     },
   },
   actions: {
@@ -23,20 +27,21 @@ export default {
             password: newUser.password,
             confirm_password: newUser.confirm_password,
           }),
-        }).then((resp) => resp.text());
-        if (!response.statusCode) {
-          context.commit("updateActiveUser", newUser); //Вызываем мутацию, чтобы обновить в state активного пользователя
-        }
+        }).then((resp) => resp);
+        // if (!response.statusCode) {
+        //   context.commit("updateActiveUser", newUser); //Вызываем мутацию, чтобы обновить в state активного пользователя
+        // }
+        let error = await response.json();
+        let errorMessage = await error.message;
+        context.commit("addError", errorMessage);
         return response;
       } catch (e) {
         context.commit("setError", e);
-        console.log(e);
       }
     },
 
     async checkAuth(context) {
       let token = localStorage.getItem("accessToken") || context.state.token; //Токен берем из localStorage
-      console.log("checkAuth token", token);
       try {
         return await fetch("https://dist.nd.ru/api/auth", {
           //Делаем запрос для проверки аунтификации
@@ -51,7 +56,7 @@ export default {
         }).catch((Error) => console.log(Error));
       } catch (e) {
         context.commit("setError", e);
-        console.log(e);
+        throw e;
       }
     },
 
@@ -60,6 +65,7 @@ export default {
       const status = (res) => {
         if (res.status !== 200) {
           //Если есть ошибки, то возвращаем ошибку
+          context.commit("addError", "Пользователь не найден");
           return Promise.reject(new Error(res.statusText));
         }
         return Promise.resolve(res);
@@ -87,7 +93,7 @@ export default {
         context.commit("updateActiveUser", { loginUser, accessToken }); //Вызываем мутацию, чтобы обновить в state активного пользователя
         return status;
       } catch (e) {
-        context.commit("setError", e);
+        console.error(e);
         throw e;
       }
     },
@@ -111,6 +117,9 @@ export default {
   getters: {
     activeUser(state) {
       return state.activeUser || localStorage.getItem("user");
+    },
+    showError(state) {
+      return state.errorText;
     },
   },
 };

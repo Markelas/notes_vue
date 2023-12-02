@@ -39,6 +39,9 @@
           Зарегистрироваться
         </button>
       </div>
+      <div class="modal__error" v-if="showError">
+        <span>{{ showError }}</span>
+      </div>
     </div>
   </form>
 </template>
@@ -56,7 +59,6 @@ export default {
   methods: {
     async submitHandler() {
       // Регистрируемся и логинимся
-      console.log(this.email, this.password, this.confirmPassword);
       if (this.password === this.confirmPassword) {
         //Если пароли совпадают
         const newUser = {
@@ -64,14 +66,18 @@ export default {
           password: this.password,
           confirm_password: this.confirmPassword,
         };
-        let registerReq = await this.$store.dispatch("register", newUser); //Делаем запрос на сервер
-        registerReq = JSON.parse(registerReq); //Парсим ответ
-        if (!("statusCode" in registerReq)) {
-          //Если есть ошибка, то остаетмся, если нет, то переходим
+        const registerReq = await this.$store.dispatch("register", newUser); //Делаем запрос на сервер
+        if (registerReq.ok) {
           await store.commit("toggleBackgroundModalWindow");
-          await this.$router.push("/");
         }
+      } else {
+        await store.commit("addError", "Пароли не совпадают");
       }
+    },
+  },
+  computed: {
+    showError() {
+      return store.getters.showError;
     },
   },
 };

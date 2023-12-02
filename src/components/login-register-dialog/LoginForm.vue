@@ -9,6 +9,7 @@
           v-model.trim="email"
           type="text"
           autocomplete="on"
+          required
           placeholder="Введите значение"
         />
         <label for="email">Пароль</label>
@@ -17,6 +18,7 @@
           v-model.trim="password"
           type="text"
           autocomplete="on"
+          required
           placeholder="Введите значение"
         />
       </div>
@@ -29,8 +31,8 @@
         </span>
         <button class="modal__bottom__btn" type="submit">Войти</button>
       </div>
-      <div class="modal__error" v-if="haveErrors">
-        <span>Пользователь с таким логином не найден</span>
+      <div class="modal__error" v-if="showError">
+        <span>{{ showError }}</span>
       </div>
     </div>
   </form>
@@ -62,6 +64,11 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+  },
+  computed: {
+    showError() {
+      return store.getters.showError;
     },
   },
 };

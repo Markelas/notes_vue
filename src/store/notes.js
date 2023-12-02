@@ -18,7 +18,6 @@ export default {
           .then((res) => res.json())
           .then((data) => data)
           .catch((Error) => console.log(Error));
-        console.log("data", data);
         context.state.noteList = data;
         return data;
       } catch (e) {
