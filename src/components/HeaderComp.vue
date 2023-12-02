@@ -7,7 +7,7 @@
         class="header__user-btn"
         @click="toggleExitBtn"
       >
-        {{ $store.getters.activeUser }} <ProfileIcon />
+        <span>{{ $store.getters.activeUser }}</span> <ProfileIcon />
       </button>
       <button class="header__btn" @click="toggleWindow" v-else>
         <EnterIcon class="header__btn__icon" /> Вход

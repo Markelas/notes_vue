@@ -23,6 +23,10 @@ export default {
   components: { EnterDialog },
 
   data: () => ({}),
+  mounted() {
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+  },
 };
 </script>
 

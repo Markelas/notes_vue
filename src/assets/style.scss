@@ -434,7 +434,7 @@ button {
 @media (max-width: 970px) {
   .notes__dashboard{
     justify-content: center;
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
     .note{
       width: 90%;
     }
@@ -508,6 +508,20 @@ button {
 }
 @media (max-width: 461px) {
   .header__user-btn{
-    display: none;
+    span{
+      display: none!important;
+    }
+  }
+  .exit-box{
+    right: 40px;
+  }
+  .note{
+    &__text{
+      display: -webkit-box;
+      -webkit-line-clamp: 10; // количество строк
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-height: 340px;
+    }
   }
 }
