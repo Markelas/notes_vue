@@ -38,6 +38,8 @@ export default {
       this.notesList.push(noteInfo); //Пушим в конец массива
     },
     async deleteNote(note) {
+      let index = this.notesList.indexOf(note);
+      if (index !== -1) this.notesList.splice(index, 1);
       await store.dispatch("deleteNote", note);
     },
   },
