@@ -16,11 +16,14 @@
         <input
           id="password"
           v-model.trim="password"
-          type="text"
+          :type="showPass ? 'text' : 'password'"
           autocomplete="on"
           required
           placeholder="Введите значение"
         />
+        <button @click="toggleShowPass" type="button">
+          <EyeIconForPassword />
+        </button>
       </div>
       <div class="modal__bottom">
         <span
@@ -40,13 +43,16 @@
 
 <script>
 import store from "@/store";
+import EyeIconForPassword from "@/components/icons/EyeIconForPassword.vue";
 
 export default {
   name: "LoginDialog",
+  components: { EyeIconForPassword },
   data: () => ({
     email: "",
     password: "",
     haveErrors: false,
+    showPass: false,
   }),
   methods: {
     async submitHandler() {
@@ -64,6 +70,9 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    toggleShowPass() {
+      this.showPass = !this.showPass;
     },
   },
   computed: {

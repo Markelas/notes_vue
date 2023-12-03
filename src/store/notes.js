@@ -42,7 +42,7 @@ export default {
           }),
         });
       } catch (e) {
-        context.commit("setError", e);
+        console.log(e);
         throw e;
       }
     },
@@ -61,7 +61,7 @@ export default {
           cache: "default",
         });
       } catch (e) {
-        context.commit("setError", e);
+        console.log(e);
         throw e;
       }
     },

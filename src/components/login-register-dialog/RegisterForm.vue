@@ -15,18 +15,24 @@
         <input
           id="password"
           v-model.trim="password"
-          type="text"
+          :type="showPass ? 'text' : 'password'"
           autocomplete="on"
           placeholder="Введите значение"
         />
+        <button @click="toggleShowPass" type="button">
+          <EyeIconForPassword />
+        </button>
         <label for="email">Пароль еще раз</label>
         <input
-          id="password"
+          id="confirmPassword"
           v-model.trim="confirmPassword"
-          type="text"
+          :type="showPass ? 'text' : 'password'"
           autocomplete="on"
           placeholder="Введите значение"
         />
+        <button @click="toggleShowPass" type="button">
+          <EyeIconForPassword />
+        </button>
       </div>
       <div class="modal__bottom">
         <span
@@ -42,19 +48,26 @@
       <div class="modal__error" v-if="showError">
         <span>{{ showError }}</span>
       </div>
+      <div class="modal__success" v-if="successRegister">
+        <span>Регистрация прошла успешно, теперь, вы можете войти</span>
+      </div>
     </div>
   </form>
 </template>
 
 <script>
 import store from "@/store";
+import EyeIconForPassword from "@/components/icons/EyeIconForPassword.vue";
 
 export default {
   name: "RegisterDialog",
+  components: { EyeIconForPassword },
   data: () => ({
     email: "",
     password: "",
     confirmPassword: "",
+    successRegister: false,
+    showPass: false,
   }),
   methods: {
     async submitHandler() {
@@ -68,11 +81,17 @@ export default {
         };
         const registerReq = await this.$store.dispatch("register", newUser); //Делаем запрос на сервер
         if (registerReq.ok) {
-          await store.commit("toggleBackgroundModalWindow");
+          this.successRegister = !this.successRegister;
+          this.email = "";
+          this.password = "";
+          this.confirmPassword = "";
         }
       } else {
         await store.commit("addError", "Пароли не совпадают");
       }
+    },
+    toggleShowPass() {
+      this.showPass = !this.showPass;
     },
   },
   computed: {

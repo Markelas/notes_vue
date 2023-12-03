@@ -225,6 +225,13 @@ button {
         border: none;
         @include text-small;
       }
+      button{
+        position: relative;
+        right: -580px;
+        top: -54px;
+        cursor: pointer;
+        background-color: white;
+      }
       textarea {
         margin: 8px;
         width: 100%;
@@ -295,6 +302,17 @@ button {
     span {
       @include text-small;
       color: #FF7461;
+    }
+  }
+  &__success {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgba(108, 255, 97, 0.1);
+    border-radius: 24px;
+    padding: 8px 20px;
+    span {
+      @include text-small;
+      color: #76ff61;
     }
   }
 }
@@ -407,6 +425,11 @@ button {
         padding: 0 24px;
         @include text-small;
       }
+      svg{
+        position: relative;
+        right: -410px;
+        top: -54px
+      }
     }
   }
 }
@@ -488,6 +511,11 @@ button {
         border-radius: 36px;
         padding: 0 24px;
         @include text-small;
+      }
+      svg{
+        position: relative;
+        right: -260px;
+        top: -54px
       }
     }
 
