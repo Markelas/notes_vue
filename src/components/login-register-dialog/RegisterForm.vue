@@ -49,7 +49,7 @@
         <span>{{ showError }}</span>
       </div>
       <div class="modal__success" v-if="successRegister">
-        <span>Регистрация прошла успешно, теперь, вы можете войти</span>
+        <span>Регистрация прошла успешно! Теперь Вы можете войти!</span>
       </div>
     </div>
   </form>
@@ -66,8 +66,8 @@ export default {
     email: "",
     password: "",
     confirmPassword: "",
-    successRegister: false,
-    showPass: false,
+    successRegister: false, //Для вывода, что регистрация прошла успешно
+    showPass: false, //Скрыть или показать пароль
   }),
   methods: {
     async submitHandler() {
@@ -75,28 +75,29 @@ export default {
       if (this.password === this.confirmPassword) {
         //Если пароли совпадают
         const newUser = {
-          email: this.email,
+          email: this.email, //Передаем данные в функцию register
           password: this.password,
           confirm_password: this.confirmPassword,
         };
         const registerReq = await this.$store.dispatch("register", newUser); //Делаем запрос на сервер
+        //Если регистрация прошла успешно
         if (registerReq.ok) {
-          this.successRegister = !this.successRegister;
-          this.email = "";
+          this.successRegister = !this.successRegister; //Отображаем информацию об этом в модальном окне
+          this.email = ""; //Очищаем
           this.password = "";
           this.confirmPassword = "";
         }
       } else {
-        await store.commit("addError", "Пароли не совпадают");
+        await store.commit("addError", "Пароли не совпадают"); //Выводим ошибку
       }
     },
     toggleShowPass() {
-      this.showPass = !this.showPass;
+      this.showPass = !this.showPass; //При нажатии на иконку глаза в пароле, отображаем или скрываем пароль
     },
   },
   computed: {
     showError() {
-      return store.getters.showError;
+      return store.getters.showError; //Получаем ошибку, если есть, то выводим
     },
   },
 };

@@ -1,8 +1,8 @@
 export default {
   state: {
-    activeUser: localStorage.getItem("user") || null,
-    token: "",
-    errorText: "",
+    activeUser: localStorage.getItem("user") || null, //Проверяем, активный ли пользователь
+    token: "", //Храним токен
+    errorText: "", //Вывод ошибки, при регистрации или входе
   },
   mutations: {
     updateActiveUser(state, user, token) {
@@ -20,27 +20,26 @@ export default {
         const response = await fetch("https://dist.nd.ru/api/reg", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          mode: "cors",
-          cache: "default",
+          mode: "cors", // Ожидается, что запрос в этом режиме будет придерживаться CORS протокола
+          cache: "default", //Использовать стандартные правила и заголовки HTTP кеширования
           body: JSON.stringify({
+            //Передаем в теле информацию о пользователе
             email: newUser.email,
             password: newUser.password,
             confirm_password: newUser.confirm_password,
           }),
-        }).then((resp) => resp);
-        // if (!response.statusCode) {
-        //   context.commit("updateActiveUser", newUser); //Вызываем мутацию, чтобы обновить в state активного пользователя
-        // }
+        });
         let error = await response.json();
         let errorMessage = await error.message;
         context.commit("addError", errorMessage);
         return response;
       } catch (e) {
-        context.commit("setError", e);
+        console.error(e);
       }
     },
 
     async checkAuth(context) {
+      //Проверяем, есть ли активный токен у сессии
       let token = localStorage.getItem("accessToken") || context.state.token; //Токен берем из localStorage
       try {
         return await fetch("https://dist.nd.ru/api/auth", {
@@ -51,12 +50,10 @@ export default {
             Authorization: `Bearer ${token}`, //Для этого используется токен, который мы получаем при логине
           },
           mode: "cors",
-          credentials: "omit",
           cache: "default",
         }).catch((Error) => console.log(Error));
       } catch (e) {
-        context.commit("setError", e);
-        throw e;
+        console.error(e);
       }
     },
 
@@ -77,7 +74,6 @@ export default {
             "Content-Type": "application/json",
           },
           mode: "cors",
-          credentials: "omit",
           cache: "default",
           body: JSON.stringify({
             email: loginUser.email,

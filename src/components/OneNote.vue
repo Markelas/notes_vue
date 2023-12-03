@@ -20,7 +20,7 @@ import CrossBtnIcon from "@/components/icons/CrossBtnIcon.vue";
 export default {
   name: "OneNote",
   components: { CrossBtnIcon },
-  props: ["notesList"],
+  props: ["notesList"], //Получаем список заметок
 };
 </script>
 

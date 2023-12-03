@@ -21,26 +21,26 @@ export default {
   components: { NewNoteDialog, AddNoteIcon, OneNote },
   data: () => ({
     modalActive: true,
-    notesList: [],
+    notesList: [], //Массив с заметками
   }),
   async mounted() {
-    await this.getNotesList();
+    await this.getNotesList(); //При загрузке страницы проверяем список заметок
   },
   methods: {
     openNewNoteWindow() {
       store.commit("toggleBackgroundModalWindow");
     },
     async getNotesList() {
-      this.notesList = await store.dispatch("getNotes");
+      this.notesList = await store.dispatch("getNotes"); //Получаем с базы данных информацию о заметках
     },
     addNoteOnDashboard(noteInfo) {
       noteInfo.id = Date.now(); //Добавляем временный id
       this.notesList.push(noteInfo); //Пушим в конец массива
     },
     async deleteNote(note) {
-      let index = this.notesList.indexOf(note);
-      if (index !== -1) this.notesList.splice(index, 1);
-      await store.dispatch("deleteNote", note);
+      let index = this.notesList.indexOf(note); //Получаем id заметки, которую хотим удалить
+      if (index !== -1) this.notesList.splice(index, 1); //Удаляем ее
+      await store.dispatch("deleteNote", note); //Также удаляем ее на сервере
     },
   },
 };

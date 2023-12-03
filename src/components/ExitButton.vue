@@ -12,9 +12,9 @@ export default {
   name: "ExitButton",
   methods: {
     exitFromAccount() {
-      store.dispatch("exitFromAccount");
-      this.$router.push("/login");
-      this.$emit("exit");
+      store.dispatch("exitFromAccount"); //Удаляем активный токен
+      this.$router.push("/login"); //Переходим на страницу логина
+      this.$emit("exit"); //Сообщаем родительскому компоненту, что вышли
     },
   },
 };

@@ -24,10 +24,10 @@ export default {
   }),
   methods: {
     toggleWindow() {
-      store.commit("toggleBackgroundModalWindow");
+      store.commit("toggleBackgroundModalWindow"); //Убираем или отображаем модальное окно
     },
     openAnotherForm() {
-      this.isLogin = !this.isLogin;
+      this.isLogin = !this.isLogin; //Переключение окна регистрации и входа
     },
   },
 };

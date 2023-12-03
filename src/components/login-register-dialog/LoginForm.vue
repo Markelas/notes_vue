@@ -64,20 +64,20 @@ export default {
       try {
         await store.dispatch("login", loginUser); //Делаем запрос
         //Если в ответе все хорошо, то переходим
-        await store.commit("toggleBackgroundModalWindow");
-        await this.$router.push("/");
-        await store.dispatch("checkAuth");
+        await store.commit("toggleBackgroundModalWindow"); //Убираем модальное окно
+        await this.$router.push("/"); //Переходим на главную страницу с заметками
+        await store.dispatch("checkAuth"); //Проверяем аунтификацию
       } catch (e) {
         console.log(e);
       }
     },
     toggleShowPass() {
-      this.showPass = !this.showPass;
+      this.showPass = !this.showPass; // Отображать или скрыть пароль
     },
   },
   computed: {
     showError() {
-      return store.getters.showError;
+      return store.getters.showError; // Отображение ошибок
     },
   },
 };
