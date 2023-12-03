@@ -1,5 +1,5 @@
 <template>
-  <div class="modal">
+  <div class="modal" role="dialog">
     <div class="modal__wrapper">
       <button class="modal__close-btn" @click="toggleWindow">
         <CrossBtnIcon />

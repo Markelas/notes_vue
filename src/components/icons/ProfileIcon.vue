@@ -11,6 +11,7 @@ export default {
     viewBox="0 0 56 56"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
   >
     <circle cx="28" cy="28" r="28" fill="#1B2F46" />
     <circle cx="28" cy="20" r="5" stroke="white" stroke-width="2" />

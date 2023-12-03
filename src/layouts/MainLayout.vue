@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout__wrapper">
+  <div class="main-layout__wrapper" role="main">
     <HeaderComp />
 
     <router-view />
