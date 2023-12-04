@@ -1,10 +1,10 @@
 <template>
-  <div class="main-layout__wrapper" role="main">
+  <main class="main-layout__wrapper" role="main">
     <HeaderComp />
 
     <router-view />
     {{ error }}
-  </div>
+  </main>
 </template>
 
 <script>

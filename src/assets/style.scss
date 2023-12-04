@@ -137,6 +137,9 @@ button {
     &:hover{
       background-color: $green-middle;
     }
+    &:active {
+      background-color: $green-dark;
+    }
     &__icon{
       max-height: 32px;
       max-width: 32px;
@@ -167,7 +170,7 @@ button {
     }
   }
   &__image {
-    width: 56%;
+    width: 53.5%;
   }
 }
 
@@ -199,6 +202,9 @@ button {
     transition: 0.3s;
     &:hover{
       background-color: $green-middle;
+    }
+    &:active {
+      background-color: $green-dark;
     }
   }
   &__body{
@@ -277,7 +283,7 @@ button {
       transition: 0.3s;
       cursor: pointer;
       &:hover{
-        color: $green-middle;
+        color: $white;
       }
     }
     &__btn{
@@ -290,6 +296,9 @@ button {
       transition: 0.3s;
       &:hover{
         background-color: $green-middle;
+      }
+      &:active {
+        background-color: $green-dark;
       }
     }
   }
@@ -336,6 +345,13 @@ button {
     padding: 4px 12px 0 12px;
     cursor: pointer;
     box-shadow: 1px 4px 22px rgba(0,0,0,0.55);
+    transition: 0.3s;
+    &:hover{
+      background-color: $green-middle;
+    }
+    &:active {
+      background-color: $green-dark;
+    }
   }
 }
 .note{
@@ -391,6 +407,10 @@ button {
       @include text-normal;
       padding: 24px;
       cursor: pointer;
+      transition: 0.3s;
+      &:hover{
+        background-color: $green-middle;
+      }
       svg{
         margin-right: 12px;
       }

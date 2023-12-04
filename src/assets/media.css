@@ -87,6 +87,9 @@ button {
 .header__container .header__btn:hover {
   background-color: #97AB0D;
 }
+.header__container .header__btn:active {
+  background-color: #819400;
+}
 .header__container .header__btn__icon {
   max-height: 32px;
   max-width: 32px;
@@ -125,7 +128,7 @@ button {
   margin-top: 40px;
 }
 .promo__image {
-  width: 56%;
+  width: 53.5%;
 }
 
 /*----------------Modal Window Login ----------------*/
@@ -161,6 +164,9 @@ button {
 }
 .modal__close-btn:hover {
   background-color: #97AB0D;
+}
+.modal__close-btn:active {
+  background-color: #819400;
 }
 .modal__body__title {
   font-family: "Montserrat", sans-serif;
@@ -265,7 +271,7 @@ button {
   cursor: pointer;
 }
 .modal__bottom .bottom__signup-btn:hover {
-  color: #97AB0D;
+  color: #FFFFFF;
 }
 .modal__bottom__btn {
   border-radius: 32px;
@@ -282,6 +288,9 @@ button {
 }
 .modal__bottom__btn:hover {
   background-color: #97AB0D;
+}
+.modal__bottom__btn:active {
+  background-color: #819400;
 }
 .modal__error {
   margin-top: 20px;
@@ -334,6 +343,13 @@ button {
   padding: 4px 12px 0 12px;
   cursor: pointer;
   box-shadow: 1px 4px 22px rgba(0, 0, 0, 0.55);
+  transition: 0.3s;
+}
+.notes__dashboard__add-btn:hover {
+  background-color: #97AB0D;
+}
+.notes__dashboard__add-btn:active {
+  background-color: #819400;
 }
 
 .note {
@@ -403,6 +419,10 @@ button {
   line-height: 160%; /* 160% */
   padding: 24px;
   cursor: pointer;
+  transition: 0.3s;
+}
+.note__box__delete:hover {
+  background-color: #97AB0D;
 }
 .note__box__delete svg {
   margin-right: 12px;
@@ -466,6 +486,9 @@ button {
   }
   .notes__dashboard .note {
     width: 40%;
+  }
+  .modal__body__title {
+    font-size: 40px;
   }
 }
 @media (max-width: 970px) {

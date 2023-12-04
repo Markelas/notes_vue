@@ -1,5 +1,5 @@
 <template>
-  <div class="header__container">
+  <header class="header__container">
     <MainLogo />
     <div>
       <button
@@ -15,7 +15,7 @@
       <ExitButton v-if="isOpenExitBtn" @exit="hideBtn" />
     </div>
     <div class="overlay" v-if="$store.state.modalActive" />
-  </div>
+  </header>
 </template>
 
 <script>
