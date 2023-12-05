@@ -234,6 +234,11 @@ button {
   background: #1A182F;
   border-radius: 5px;
 }
+.modal__body__inputs .input__error {
+  color: #FF7461;
+  margin: -5px 0 5px 20px;
+  padding: 0;
+}
 .modal__body__inputs .input__length {
   display: flex;
   justify-content: flex-end;
@@ -407,7 +412,7 @@ button {
 .note__box {
   display: flex;
   justify-content: flex-end;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 .note__box__delete {
   background-color: #B1C909;
@@ -420,9 +425,13 @@ button {
   padding: 24px;
   cursor: pointer;
   transition: 0.3s;
+  border-radius: 10px;
 }
 .note__box__delete:hover {
   background-color: #97AB0D;
+}
+.note__box__delete:active {
+  background-color: #819400;
 }
 .note__box__delete svg {
   margin-right: 12px;

@@ -2,7 +2,7 @@ export default {
   state: {
     activeUser: localStorage.getItem("user") || null, //Проверяем, активный ли пользователь
     token: "", //Храним токен
-    errorText: "", //Вывод ошибки, при регистрации или входе
+    errorText: null, //Вывод ошибки, при регистрации или входе
   },
   mutations: {
     updateActiveUser(state, user, token) {

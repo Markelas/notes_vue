@@ -19,7 +19,7 @@ export default new Vuex.Store({
     },
 
     clearError(state) {
-      state.error = null;
+      state.errorText = null;
     },
   },
   actions: {},

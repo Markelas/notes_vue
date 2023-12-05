@@ -24,6 +24,10 @@ export default {
   }),
   methods: {
     toggleWindow() {
+      if (store.state.modalActive) {
+        //Очистка модального окна от ошибок
+        store.commit("addError", null);
+      }
       store.commit("toggleBackgroundModalWindow"); //Убираем или отображаем модальное окно
     },
     openAnotherForm() {

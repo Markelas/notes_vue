@@ -9,21 +9,21 @@
           v-model.trim="email"
           type="text"
           autocomplete="on"
-          required
           placeholder="Введите значение"
         />
+        <p class="input__error" v-if="invalidEmail">{{ invalidEmail }}</p>
         <label for="email">Пароль</label>
         <input
           id="password"
           v-model.trim="password"
           :type="showPass ? 'text' : 'password'"
           autocomplete="on"
-          required
           placeholder="Введите значение"
         />
         <button @click="toggleShowPass" type="button">
           <EyeIconForPassword />
         </button>
+        <p class="input__error" v-if="invalidPassword">{{ invalidPassword }}</p>
       </div>
       <div class="modal__bottom">
         <span
@@ -53,9 +53,31 @@ export default {
     password: "",
     haveErrors: false,
     showPass: false,
+    invalidPassword: null,
+    invalidEmail: null,
   }),
   methods: {
     async submitHandler() {
+      //Проверка пароля
+      if (this.password.length === 0) {
+        this.invalidPassword = "Пароль не может быть пустым";
+      } else if (this.password.length < 3) {
+        this.invalidPassword = "Пароль не может быть короче 4 символов";
+      } else {
+        this.invalidPassword = null;
+      }
+
+      //Проверка email
+      const EMAIL_REGEXP =
+        /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+      if (this.email.length === 0) {
+        this.invalidEmail = "E-Mail не может быть пустым";
+      } else if (!EMAIL_REGEXP.test(this.email)) {
+        this.invalidEmail = "Невалидный адрес электронной почты";
+      } else {
+        this.invalidEmail = null;
+      }
+
       //Заходим
       const loginUser = {
         email: this.email,
