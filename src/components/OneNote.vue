@@ -1,6 +1,6 @@
 <template>
-  <div class="notes__dashboard">
-    <div class="note" v-for="note in notesList" :key="note.id">
+  <section class="notes__dashboard">
+    <article class="note" v-for="note in notesList" :key="note.id">
       <h4 class="note__title">{{ note.title }}</h4>
       <p class="note__text">
         {{ note.content }}
@@ -10,8 +10,8 @@
           <cross-btn-icon /> Удалить
         </button>
       </div>
-    </div>
-  </div>
+    </article>
+  </section>
 </template>
 
 <script>

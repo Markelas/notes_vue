@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <OneNote :notes-list="notesList" @delete="deleteNote" />
 
     <button class="notes__dashboard__add-btn" @click="openNewNoteWindow">
@@ -7,7 +7,7 @@
     </button>
     <NewNoteDialog v-if="$store.state.modalActive" @add="addNoteOnDashboard" />
     <div class="overlay" v-if="$store.state.modalActive" />
-  </div>
+  </main>
 </template>
 
 <script>

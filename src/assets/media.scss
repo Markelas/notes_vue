@@ -39,6 +39,9 @@
   .modal__body__inputs .input__bottom .input__error {
     right: 110px;
   }
+  .modal__body__title{
+    font-size: 38px;
+  }
 }
 @media (max-width: 1138px) {
   .promo{
@@ -60,9 +63,6 @@
       width: 40%;
     }
   }
-  .modal__body__title{
-    font-size: 40px;
-  }
 }
 @media (max-width: 970px) {
   .notes__dashboard{
@@ -71,16 +71,6 @@
     .note{
       width: 90%;
     }
-  }
-  .overlay{
-    width:95%;
-    height:100%;
-    left: 0;
-    top: 0;
-    z-index:4;
-    background-color: #0A1F38;
-    opacity: 0.7;
-    overflow: hidden;
   }
 }
 @media (max-width: 650px) {

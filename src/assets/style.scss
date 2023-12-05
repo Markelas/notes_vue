@@ -92,15 +92,6 @@ button {
   border: 0;
 }
 
-.overlay{
-  position:fixed;
-  width:98%;
-  height:100%;
-  z-index:12;
-  background-color: #0A1F38;
-  opacity: 0.7;
-  overflow-x: hidden;
-}
 
 .main-layout__wrapper{
   max-width: 1760px;
@@ -185,6 +176,7 @@ button {
   justify-content: center;
   align-items: center;
   z-index: 99;
+  background-color: rgba(10, 31, 56, 0.7);
   &__wrapper{
     max-width: 780px;
     border-radius: 40px;

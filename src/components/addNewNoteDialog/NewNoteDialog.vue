@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" role="dialog">
+  <dialog class="modal">
     <div class="modal__wrapper">
       <button class="modal__close-btn" @click="toggleBackgroundModalWindow">
         <CrossBtnIcon />
@@ -47,7 +47,7 @@
         </div>
       </form>
     </div>
-  </div>
+  </dialog>
 </template>
 
 <script>

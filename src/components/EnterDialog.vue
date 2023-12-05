@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" role="dialog">
+  <dialog class="modal">
     <div class="modal__wrapper">
       <button class="modal__close-btn" @click="toggleWindow">
         <CrossBtnIcon />
@@ -7,7 +7,7 @@
       <LoginDialog v-if="isLogin" @change="openAnotherForm" />
       <RegisterDialog v-else @change="openAnotherForm" />
     </div>
-  </div>
+  </dialog>
 </template>
 
 <script>

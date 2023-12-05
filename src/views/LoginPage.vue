@@ -1,18 +1,18 @@
 <template>
-  <section class="promo">
-    <div class="promo__text">
+  <main class="promo">
+    <section class="promo__text">
       <h1 class="promo__text__title">Мои заметки</h1>
       <h3 class="promo__text__subtitle">
         Не забывай о важном, храни его в облаке.
       </h3>
-    </div>
+    </section>
     <img
       src="../assets/images/mainimg.png"
       alt="Hand and notes img"
       class="promo__image"
     />
     <EnterDialog v-if="$store.state.modalActive" />
-  </section>
+  </main>
 </template>
 
 <script>

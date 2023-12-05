@@ -14,7 +14,6 @@
       </button>
       <ExitButton v-if="isOpenExitBtn" @exit="hideBtn" />
     </div>
-    <div class="overlay" v-if="$store.state.modalActive" />
   </header>
 </template>
 

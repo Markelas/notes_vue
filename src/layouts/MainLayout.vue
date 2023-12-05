@@ -1,9 +1,9 @@
 <template>
-  <main class="main-layout__wrapper">
+  <div class="main-layout__wrapper">
     <HeaderComp />
 
     <router-view />
-  </main>
+  </div>
 </template>
 
 <script>
