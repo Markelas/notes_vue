@@ -21,7 +21,8 @@
           placeholder="Введите значение"
         />
         <button @click="toggleShowPass" type="button">
-          <EyeIconForPassword />
+          <EyeIconForPassword v-if="!showPass" />
+          <ClosedEye v-else />
         </button>
         <p class="input__error" v-if="invalidPassword">{{ invalidPassword }}</p>
       </div>
@@ -44,10 +45,11 @@
 <script>
 import store from "@/store";
 import EyeIconForPassword from "@/components/icons/EyeIconForPassword.vue";
+import ClosedEye from "@/components/icons/ClosedEye.vue";
 
 export default {
   name: "LoginDialog",
-  components: { EyeIconForPassword },
+  components: { ClosedEye, EyeIconForPassword },
   data: () => ({
     email: "",
     password: "",
@@ -79,7 +81,11 @@ export default {
       }
 
       //Заходим
-      if (this.email.length !== 0 && this.password.length !== 0) {
+      if (
+        this.email.length !== 0 &&
+        this.password.length !== 0 &&
+        !this.invalidEmail
+      ) {
         const loginUser = {
           email: this.email,
           password: this.password,

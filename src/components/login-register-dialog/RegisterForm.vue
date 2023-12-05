@@ -80,7 +80,7 @@ export default {
       //Проверка пароля
       if (this.password.length === 0) {
         this.invalidPassword = "Пароль не может быть пустым";
-      } else if (this.password.length < 3) {
+      } else if (this.password.length < 4) {
         this.invalidPassword = "Пароль не может быть короче 4 символов";
       } else {
         this.invalidPassword = null;
