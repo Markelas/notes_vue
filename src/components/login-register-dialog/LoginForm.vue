@@ -79,18 +79,20 @@ export default {
       }
 
       //Заходим
-      const loginUser = {
-        email: this.email,
-        password: this.password,
-      };
-      try {
-        await store.dispatch("login", loginUser); //Делаем запрос
-        //Если в ответе все хорошо, то переходим
-        await store.commit("toggleBackgroundModalWindow"); //Убираем модальное окно
-        await this.$router.push("/"); //Переходим на главную страницу с заметками
-        await store.dispatch("checkAuth"); //Проверяем аунтификацию
-      } catch (e) {
-        console.log(e);
+      if (this.email.length !== 0 && this.password.length !== 0) {
+        const loginUser = {
+          email: this.email,
+          password: this.password,
+        };
+        try {
+          await store.dispatch("login", loginUser); //Делаем запрос
+          //Если в ответе все хорошо, то переходим
+          await store.commit("toggleBackgroundModalWindow"); //Убираем модальное окно
+          await this.$router.push("/"); //Переходим на главную страницу с заметками
+          await store.dispatch("checkAuth"); //Проверяем аунтификацию
+        } catch (e) {
+          console.log(e);
+        }
       }
     },
     toggleShowPass() {
