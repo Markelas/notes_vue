@@ -33,12 +33,13 @@ button {
 }
 
 .overlay {
-  position: absolute;
-  width: 96%;
+  position: fixed;
+  width: 98%;
   height: 100%;
-  z-index: 4;
+  z-index: 12;
   background-color: #0A1F38;
   opacity: 0.7;
+  overflow-x: hidden;
 }
 
 .main-layout__wrapper {
@@ -234,6 +235,17 @@ button {
   background: #1A182F;
   border-radius: 5px;
 }
+.modal__body__inputs .input__bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal__body__inputs .input__bottom .input__error {
+  color: #FF7461;
+  margin: 5px 0 5px 20px;
+  padding: 0;
+  position: relative;
+  right: 280px;
+}
 .modal__body__inputs .input__error {
   color: #FF7461;
   margin: -5px 0 5px 20px;
@@ -361,7 +373,7 @@ button {
   min-width: 30%;
   height: 100%;
   background-color: #B1C909;
-  border-radius: 12px;
+  border-radius: 12px 0 12px 12px;
   position: relative;
   inline-size: 300px;
   overflow-wrap: break-word;
@@ -388,7 +400,7 @@ button {
   right: 0;
   width: 0;
   height: 0;
-  border-top: 50px solid #0A1F38;
+  border-top: 51px solid #0A1F38;
   border-left: 50px solid transparent;
 }
 .note__title {
@@ -451,6 +463,7 @@ button {
   .modal__wrapper {
     width: 594px;
     padding: 20px 56px 56px 56px;
+    overflow-x: hidden;
   }
   .modal__wrapper .modal__close-btn {
     right: -460px;
@@ -474,6 +487,9 @@ button {
     position: relative;
     right: -410px;
     top: -54px;
+  }
+  .modal__body__inputs .input__bottom .input__error {
+    right: 110px;
   }
 }
 @media (max-width: 1138px) {
@@ -507,6 +523,16 @@ button {
   }
   .notes__dashboard .note {
     width: 90%;
+  }
+  .overlay {
+    width: 95%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    background-color: #0A1F38;
+    opacity: 0.7;
+    overflow: hidden;
   }
 }
 @media (max-width: 650px) {
@@ -572,6 +598,10 @@ button {
   .modal .modal__bottom span {
     order: 2;
     font-size: 14px;
+  }
+  .modal__body__inputs .input__bottom .input__error {
+    right: 20px;
+    font-size: 12px;
   }
 }
 @media (max-width: 461px) {

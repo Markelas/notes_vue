@@ -14,22 +14,32 @@
               v-model="noteTitle"
               maxlength="100"
               type="text"
-              required
               placeholder="Введите название"
             />
-            <span class="input__length">{{ `${noteTitle.length} / 100` }}</span>
+            <div class="input__bottom">
+              <span class="input__error" v-if="titleError"
+                >Поле не должно быть пустым</span
+              >
+              <span class="input__length">{{
+                `${noteTitle.length} / 100`
+              }}</span>
+            </div>
             <label for="noteContent">Текст заметки</label>
             <textarea
               v-model="noteContent"
               maxlength="200"
               rows="7"
               cols="3"
-              required
               placeholder="Введите текст"
             />
-            <span class="input__length">{{
-              `${noteContent.length} / 200`
-            }}</span>
+            <div class="input__bottom">
+              <span class="input__error" v-if="contentError"
+                >Поле не должно быть пустым</span
+              >
+              <span class="input__length">{{
+                `${noteContent.length} / 200`
+              }}</span>
+            </div>
           </div>
           <div class="modal__bottom">
             <button class="modal__bottom__btn" type="submit">Добавить</button>
@@ -50,16 +60,26 @@ export default {
   data: () => ({
     noteTitle: "",
     noteContent: "",
+    titleError: null,
+    contentError: null,
   }),
   methods: {
     async submitHandler() {
-      const noteInfo = {
-        title: this.noteTitle,
-        content: this.noteContent,
-      };
-      await store.dispatch("addNote", noteInfo);
-      this.toggleBackgroundModalWindow();
-      this.$emit("add", noteInfo);
+      if (this.noteContent.length === 0) {
+        this.contentError = true;
+      }
+      if (this.noteTitle.length === 0) {
+        this.titleError = true;
+      }
+      if (this.noteContent.length !== 0 && this.noteTitle.length !== 0) {
+        const noteInfo = {
+          title: this.noteTitle,
+          content: this.noteContent,
+        };
+        await store.dispatch("addNote", noteInfo);
+        this.toggleBackgroundModalWindow();
+        this.$emit("add", noteInfo);
+      }
     },
 
     toggleBackgroundModalWindow() {
